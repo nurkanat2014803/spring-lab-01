@@ -3,6 +3,7 @@ package kz.iiitu.spring_lab_01.service;
 import kz.iiitu.spring_lab_01.audit.Audited;
 import org.springframework.beans.factory.annotation.Autowired; // ← НОВЫЙ импорт
 import org.springframework.stereotype.Service;
+import kz.iiitu.spring_lab_01.audit.RequiresRole;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -31,7 +32,8 @@ public class CatalogService {
                 .mapToObj(i -> "Item no. " + i)
                 .toList();
     }
-    @Audited(action = "CATALOG_REMOVE")   // ← НОВАЯ строка
+    @Audited(action = "CATALOG_REMOVE")
+    @RequiresRole("ADMIN")   // ← новое
     public String remove(long id) {
         if (id <= 0) {
             throw new IllegalArgumentException("Invalid identifier: " + id);
