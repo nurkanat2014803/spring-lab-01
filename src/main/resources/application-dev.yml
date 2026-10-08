@@ -1,0 +1,14 @@
+server:
+  port: 9091
+
+app:
+  mail:
+    enabled: false
+    retry-count: 1
+  rate-limit:
+    requests-per-minute: 20
+    burst: 5
+
+logging:
+  level:
+    kz.iiitu: DEBUG

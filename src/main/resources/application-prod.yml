@@ -1,0 +1,14 @@
+server:
+  port: 9090
+
+app:
+  mail:
+    enabled: true
+    retry-count: 5
+  rate-limit:
+    requests-per-minute: 200
+    burst: 50
+
+logging:
+  level:
+    kz.iiitu: WARN
