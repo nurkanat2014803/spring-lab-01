@@ -23,6 +23,14 @@ public class HelloController {
                 Runtime.getRuntime().availableProcessors());
     }
 
+    @GetMapping("/reverse")
+    public ReverseResult reverse(@RequestParam(defaultValue = "") String text) {
+        String reversed = new StringBuilder(text).reverse().toString();
+        return new ReverseResult(text, reversed, reversed.length());
+    }
+
+    public record ReverseResult(String original, String reversed, int length) {}
+
     public record Greeting(String message, String owner, LocalDateTime timestamp) {}
     public record Info(String owner, String javaVersion, int cpuCores) {}
 }
